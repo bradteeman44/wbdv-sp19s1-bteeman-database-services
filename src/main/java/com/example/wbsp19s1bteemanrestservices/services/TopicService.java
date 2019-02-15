@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.wbsp19s1bteemanrestservices.services.LessonService;
+import com.example.wbsp19s1bteemanrestservices.model.Lesson;
 import com.example.wbsp19s1bteemanrestservices.model.Topic;
 
 @RestController
@@ -32,14 +34,25 @@ public class TopicService {
 			@PathVariable("lid") Integer lid,
 			@RequestBody Topic topic) {
 		topic.setId(((Double)(Math.random() * 10000000)).intValue());
-		topics.add(topic);
-		return topics;
+		for(Lesson les : LessonService.lessons) {
+			if(les.getId().intValue() == lid) {
+				les.addTopic(topic);;
+				topics.add(topic);
+				return les.getTopics();
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/lessons/{lid}/topics")
 	public List<Topic> findAllTopics(
 			@PathVariable("lid") Integer lid) {
-		return topics;
+		for(Lesson les : LessonService.lessons) {
+			if(les.getId().intValue() == lid) {
+				return les.getTopics();
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/topics/{tid}")

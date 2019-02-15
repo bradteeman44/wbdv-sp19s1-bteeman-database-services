@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.wbsp19s1bteemanrestservices.model.Module;
+import com.example.wbsp19s1bteemanrestservices.services.ModuleService;
 import com.example.wbsp19s1bteemanrestservices.model.Lesson;
 
 @RestController
@@ -21,7 +23,7 @@ public class LessonService {
 
 	private Lesson one = new Lesson(123, "Lesson 1");
 	private Lesson two = new Lesson(234, "Lesson 2");
-	private List<Lesson> lessons = new ArrayList<Lesson>();
+	public static List<Lesson> lessons = new ArrayList<Lesson>();
 	{
 		lessons.add(one);
 		lessons.add(two);
@@ -32,14 +34,25 @@ public class LessonService {
 			@PathVariable("mid") Integer mid,
 			@RequestBody Lesson lesson) {
 		lesson.setId(((Double)(Math.random() * 10000000)).intValue());
-		lessons.add(lesson);
-		return lessons;
+		for(Module mod : ModuleService.modules) {
+			if(mod.getId().intValue() == mid) {
+				mod.addLesson(lesson);
+				lessons.add(lesson);
+				return mod.getLessons();
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/modules/{mid}/lessons")
 	public List<Lesson> findAllLessons(
 			@PathVariable("mid") Integer mid) {
-		return lessons;
+		for(Module mod : ModuleService.modules) {
+			if(mod.getId().intValue() == mid) {
+				return mod.getLessons();
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/lessons/{lid}")

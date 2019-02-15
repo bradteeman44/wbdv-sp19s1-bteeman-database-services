@@ -14,18 +14,46 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.wbsp19s1bteemanrestservices.model.Course;
+import com.example.wbsp19s1bteemanrestservices.model.Lesson;
+import com.example.wbsp19s1bteemanrestservices.model.Topic;
+import com.example.wbsp19s1bteemanrestservices.model.Widget;
+import com.example.wbsp19s1bteemanrestservices.model.Module;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:3000")
 public class CourseService {
 
-	private Course one = new Course(123, "Hello World");
+	private Course one = new Course(123, "WebDev");
+	private Widget wid1 = new Widget(1, "The DOM");
+	private Widget wid2 = new Widget(2, "The Wid");
+	private Topic top1 = new Topic(1, "The Wid");
+	private Topic top2 = new Topic(2, "The Wid");
+	private Lesson les1 = new Lesson(1, "The Wid");
+	private Lesson les2 = new Lesson(2, "The Wid");
+	private Module mod1 = new Module(1, "The Wid");
+	private Module mod2 = new Module(2, "The Wid");
+	
+	
 	private Course two = new Course(234, "Best Course");
-	private List<Course> courses = new ArrayList<Course>();
+	public static List<Course> courses = new ArrayList<Course>();
+	
 	{
+		top1.addWidget(wid1);
+		top1.addWidget(wid2);
+		top2.addWidget(wid1);
+		top2.addWidget(wid2);
+		les1.addTopic(top1);
+		les1.addTopic(top2);
+		les2.addTopic(top1);
+		les2.addTopic(top2);
+		mod1.addLesson(les1);
+		mod2.addLesson(les2);
+		one.addModule(mod1);
+		one.addModule(mod2);
 		courses.add(one);
 		courses.add(two);
 	}
+	
 	
 	@PostMapping("/api/courses")
 	public List<Course> createCourse(

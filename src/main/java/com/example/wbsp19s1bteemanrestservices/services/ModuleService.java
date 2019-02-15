@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.wbsp19s1bteemanrestservices.model.Course;
 import com.example.wbsp19s1bteemanrestservices.model.Module;
+import com.example.wbsp19s1bteemanrestservices.model.Course;
 import com.example.wbsp19s1bteemanrestservices.services.CourseService;
 
 @RestController
@@ -23,7 +23,7 @@ public class ModuleService {
 
 	private Module one = new Module(123, "Module 1");
 	private Module two = new Module(234, "Module 2");
-	private List<Module> modules = new ArrayList<Module>();
+	public static List<Module> modules = new ArrayList<Module>();
 	{
 		modules.add(one);
 		modules.add(two);
@@ -34,14 +34,25 @@ public class ModuleService {
 			@PathVariable("cid") Integer cid,
 			@RequestBody Module module) {
 		module.setId(((Double)(Math.random() * 10000000)).intValue());
-		modules.add(module);
-		return modules;
+		for(Course cor : CourseService.courses) {
+			if(cor.getId().intValue() == cid) {
+				cor.addModule(module);
+				modules.add(module);
+				return cor.getModules();
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/courses/{cid}/modules")
 	public List<Module> findAllModules(
 			@PathVariable("cid") Integer cid) {
-		return modules;
+		for(Course cor : CourseService.courses) {
+			if(cor.getId().intValue() == cid) {
+				return cor.getModules();
+			}
+		}
+		return null;
 	}
 	
 	@GetMapping("/api/modules/{mid}")
