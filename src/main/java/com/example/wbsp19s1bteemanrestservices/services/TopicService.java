@@ -24,11 +24,12 @@ public class TopicService {
 	private Topic one = new Topic(123, "Topic 1");
 	private Topic two = new Topic(234, "Topic 2");
 	private List<Topic> topics = new ArrayList<Topic>();
+	/*
 	{
 		topics.add(one);
 		topics.add(two);
 	}
-	
+	*/
 	@PostMapping("/api/lessons/{lid}/topics")
 	public List<Topic> createTopic(
 			@PathVariable("lid") Integer lid,

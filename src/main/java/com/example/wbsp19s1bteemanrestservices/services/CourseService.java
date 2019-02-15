@@ -23,6 +23,7 @@ import com.example.wbsp19s1bteemanrestservices.model.Module;
 @CrossOrigin(origins = "http://localhost:3000")
 public class CourseService {
 
+	
 	private Course one = new Course(123, "WebDev");
 	private Widget wid1 = new Widget(1, "The DOM");
 	private Widget wid2 = new Widget(2, "The Wid");
@@ -34,9 +35,10 @@ public class CourseService {
 	private Module mod2 = new Module(2, "The Wid");
 	
 	
+	
 	private Course two = new Course(234, "Best Course");
 	public static List<Course> courses = new ArrayList<Course>();
-	
+	/*
 	{
 		top1.addWidget(wid1);
 		top1.addWidget(wid2);
@@ -53,7 +55,7 @@ public class CourseService {
 		courses.add(one);
 		courses.add(two);
 	}
-	
+	*/
 	
 	@PostMapping("/api/courses")
 	public List<Course> createCourse(

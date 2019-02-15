@@ -24,11 +24,12 @@ public class LessonService {
 	private Lesson one = new Lesson(123, "Lesson 1");
 	private Lesson two = new Lesson(234, "Lesson 2");
 	public static List<Lesson> lessons = new ArrayList<Lesson>();
+	/*
 	{
 		lessons.add(one);
 		lessons.add(two);
 	}
-	
+	*/
 	@PostMapping("/api/modules/{mid}/lessons")
 	public List<Lesson> createLesson(
 			@PathVariable("mid") Integer mid,
