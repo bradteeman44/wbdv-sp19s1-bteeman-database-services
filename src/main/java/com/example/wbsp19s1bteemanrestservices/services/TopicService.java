@@ -18,6 +18,7 @@ import com.example.wbsp19s1bteemanrestservices.model.Lesson;
 import com.example.wbsp19s1bteemanrestservices.model.Topic;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 public class TopicService {
 	
 	private Topic one = new Topic(123, "Topic 1");
