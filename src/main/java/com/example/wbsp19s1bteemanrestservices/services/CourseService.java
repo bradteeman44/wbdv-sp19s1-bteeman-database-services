@@ -20,7 +20,6 @@ import com.example.wbsp19s1bteemanrestservices.model.Widget;
 import com.example.wbsp19s1bteemanrestservices.model.Module;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
 public class CourseService {
 
 	private Course one = new Course(123, "WebDev");
