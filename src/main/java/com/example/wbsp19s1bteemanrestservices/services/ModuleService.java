@@ -24,25 +24,14 @@ import com.example.wbsp19s1bteemanrestservices.services.CourseService;
 @CrossOrigin(origins = "http://localhost:3000")
 public class ModuleService {
 
-	private Module one = new Module(1, "Module 1");
-	private Module two = new Module(2, "Module 2");
-	
-	private Widget wid1 = new Widget(1, "The DOM");
-	private Widget wid2 = new Widget(2, "The Wid");
-	private Topic top1 = new Topic(1, "The Wid");
-	private Topic top2 = new Topic(2, "The Wid");
-	private Lesson les1 = new Lesson(1, "The Wid");
-	private Lesson les2 = new Lesson(2, "The Wid");
-	
+	private Module one = new Module(123, "Module 1");
+	private Module two = new Module(234, "Module 2");
 	public static List<Module> modules = new ArrayList<Module>();
-	/*
-	{
-		top1.addWidget(wid1);
-		les1.addTopic(top1);
-		one.addLesson(les1);
+	{	
 		modules.add(one);
+		modules.add(two);
 	}
-	*/
+	
 	@PostMapping("/api/courses/{cid}/modules")
 	public List<Module> createModule(
 			@PathVariable("cid") Integer cid,

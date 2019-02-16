@@ -24,8 +24,8 @@ public class Lesson {
 		this.topics = new ArrayList<>();
 	}
 	
-	public void addTopic (Topic l) {
-		this.topics.add(l);
+	public void addTopic (Topic t) {
+		this.topics.add(t);
 	}
 
 	public Integer getId() {

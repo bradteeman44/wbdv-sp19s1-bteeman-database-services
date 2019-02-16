@@ -27,6 +27,7 @@ public class UserService {
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user,
 			HttpSession session) {
+		user.setId(((Double)(Math.random() * 10000000)).intValue());
 		session.setAttribute("currentUser", user);
 		users.add(user);
 		return user;
