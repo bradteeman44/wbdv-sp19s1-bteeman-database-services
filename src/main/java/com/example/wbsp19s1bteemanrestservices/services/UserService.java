@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.wbsp19s1bteemanrestservices.model.User;
 
 @RestController
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 public class UserService {
 	
 	private User alice = new User(123, "alice", "p", "Alice", "Wonderland", "STUDENT");

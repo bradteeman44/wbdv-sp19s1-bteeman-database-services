@@ -18,11 +18,12 @@ import com.example.wbsp19s1bteemanrestservices.model.Lesson;
 import com.example.wbsp19s1bteemanrestservices.model.Topic;
 
 @RestController
+@CrossOrigin(origins = "*", allowCredentials = "true", allowedHeaders = "*")
 public class TopicService {
 	
 	private Topic one = new Topic(123, "Topic 1");
 	private Topic two = new Topic(234, "Topic 2");
-	public static List<Topic> topics = new ArrayList<Topic>();
+	private List<Topic> topics = new ArrayList<Topic>();
 	{
 		topics.add(one);
 		topics.add(two);
