@@ -1,4 +1,4 @@
-package com.example.wbsp19s1bteemanrestservices;
+package com.example.wbsp19s1bteemandatabaseservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

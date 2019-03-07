@@ -1,16 +1,20 @@
-package com.example.wbsp19s1bteemanrestservices.model;
+package com.example.wbsp19s1bteemandatabaseservices.model;
+import javax.persistence.*;
 
+@Entity
 public class User {
+	@Id
+	@GeneratedValue
+		(strategy=GenerationType.IDENTITY)
 	private Integer id;
-	private String username;
-	private String password;
-	private String firstName;
-	private String lastName;
-	private String role;
+	protected String username;
+	protected String password;
+	protected String firstName;
+	protected String lastName;
+	protected String role;
 	
 	public User() {}
-	public User(int id, String username, String password, String firstName, String lastName, String role) {
-		this.id = id;
+	public User(String username, String password, String firstName, String lastName, String role) {
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
@@ -53,5 +57,12 @@ public class User {
 	}
 	public void setRole(String role) {
 		this.role = role;
+	}
+	public void set(User newUser) {
+		this.username = newUser.username;
+		this.password = newUser.password;
+		this.firstName = newUser.firstName;
+		this.lastName = newUser.lastName;
+		this.role = newUser.role;
 	}
 }
