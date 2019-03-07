@@ -1,5 +1,8 @@
 package com.example.wbsp19s1bteemandatabaseservices.repositories;
 
-public interface WidgetRepository {
+import org.springframework.data.repository.CrudRepository;
 
-}
+import com.example.wbsp19s1bteemandatabaseservices.model.*;
+
+public interface WidgetRepository 
+	extends CrudRepository<Widget, Integer>{}

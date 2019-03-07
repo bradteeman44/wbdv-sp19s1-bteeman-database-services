@@ -10,17 +10,24 @@ public class Widget {
 	@Id
 	@GeneratedValue
 		(strategy=GenerationType.IDENTITY)
-	private Integer id;
-	private String title;
+	protected Integer id;
+	protected String wtype;
+	protected Integer width;
+	protected Integer height;
+	protected Boolean editing;
+	protected String title;
 	
 	@ManyToOne()
 	@JsonIgnore
-	private Topic topic;
+	protected Topic topic;
 	
 	public Widget() {}
 	
-	public Widget(int id, String title) {
-		this.id = id;
+	public Widget(String wtype, Integer width, Integer height, Boolean editing, String title) {
+		this.wtype = wtype;
+		this.width = width;
+		this.height = height;
+		this.editing = editing;
 		this.title = title;
 	}
 
@@ -30,6 +37,38 @@ public class Widget {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public String getWtype() {
+		return wtype;
+	}
+
+	public void setWtype(String wtype) {
+		this.wtype = wtype;
+	}
+	
+	public Integer getWidth() {
+		return width;
+	}
+
+	public void setWidth(Integer width) {
+		this.width = width;
+	}
+
+	public Integer getHeight() {
+		return height;
+	}
+
+	public void setHeight(Integer height) {
+		this.height = height;
+	}
+	
+	public Boolean getEditing() {
+		return editing;
+	}
+
+	public void setEditing(Boolean editing) {
+		this.editing = editing;
 	}
 
 	public String getTitle() {
@@ -52,7 +91,11 @@ public class Widget {
 	}
 	
 	public void set(Widget newWidget) {
-		this.title = newWidget.title;
+		this.wtype = newWidget.wtype;
+		this.width = newWidget.width;
+		this.height = newWidget.height;
 		this.topic = newWidget.topic;
+		this.editing = newWidget.editing;
+		this.title = newWidget.title;
 	}
 }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.wbsp19s1bteemandatabaseservices.model.Lesson;
 import com.example.wbsp19s1bteemandatabaseservices.model.Topic;
+import com.example.wbsp19s1bteemandatabaseservices.model.Widget;
 import com.example.wbsp19s1bteemandatabaseservices.repositories.*;
 
 @RestController
@@ -23,6 +24,8 @@ public class TopicService {
 	TopicRepository topicRepository;
 	@Autowired
 	LessonRepository lessonRepository;
+	@Autowired
+	WidgetRepository widgetRepository;
 	
 	@PostMapping("/api/lessons/{lid}/topics")
 	public Topic createTopic(
@@ -59,5 +62,19 @@ public class TopicService {
 			@PathVariable("tid") Integer tid) {
 		topicRepository.deleteById(tid);
 	}
-
+	
+	@PostMapping("/api/topics/{tid}/widget")
+	public Widget createWidget(
+			@PathVariable("tid") Integer tid,
+			@RequestBody Widget widget) {
+		widget.setTopic(topicRepository.findById(tid).get());
+		return widgetRepository.save(widget);
+	}
+	
+	@GetMapping("/api/topics/{tid}/widget")
+	public List<Widget> findAllWidgets(
+			@PathVariable("tid") Integer tid) {
+		Topic topic = topicRepository.findById(tid).get();
+		return topic.getWidgets();
+	}
 }
