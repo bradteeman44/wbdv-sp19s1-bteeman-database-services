@@ -24,8 +24,6 @@ public class TopicService {
 	TopicRepository topicRepository;
 	@Autowired
 	LessonRepository lessonRepository;
-	@Autowired
-	WidgetRepository widgetRepository;
 	
 	@PostMapping("/api/lessons/{lid}/topics")
 	public Topic createTopic(
@@ -61,20 +59,5 @@ public class TopicService {
 	public void deleteTopic(
 			@PathVariable("tid") Integer tid) {
 		topicRepository.deleteById(tid);
-	}
-	
-	@PostMapping("/api/topics/{tid}/widget")
-	public Widget createWidget(
-			@PathVariable("tid") Integer tid,
-			@RequestBody Widget widget) {
-		widget.setTopic(topicRepository.findById(tid).get());
-		return widgetRepository.save(widget);
-	}
-	
-	@GetMapping("/api/topics/{tid}/widget")
-	public List<Widget> findAllWidgets(
-			@PathVariable("tid") Integer tid) {
-		Topic topic = topicRepository.findById(tid).get();
-		return topic.getWidgets();
 	}
 }
