@@ -26,10 +26,10 @@ public class Module {
 		this.lessons = new ArrayList<>();
 	}
 	
-	public Module(int id, String title) {
-		this.id = id;
+	public Module(String title) {
 		this.title = title;
 		this.lessons = new ArrayList<>();
+		this.addLesson(new Lesson("New Lesson"));
 	}
 	
 	public Integer getId() {

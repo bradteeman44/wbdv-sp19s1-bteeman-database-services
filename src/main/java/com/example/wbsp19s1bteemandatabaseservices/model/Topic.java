@@ -25,10 +25,10 @@ public class Topic {
 		this.widgets = new ArrayList<>();
 	}
 	
-	public Topic(int id, String title) {
-		this.id = id;
+	public Topic(String title) {
 		this.title = title;
 		this.widgets = new ArrayList<>();
+		this.addWidget(new Widget());
 	}
 	
 	public Integer getId() {

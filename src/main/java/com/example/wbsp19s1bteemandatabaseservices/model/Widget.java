@@ -21,7 +21,13 @@ public class Widget {
 	@JsonIgnore
 	protected Topic topic;
 	
-	public Widget() {}
+	public Widget() {
+		this.wtype = "HEADING";
+		this.width = 100;
+		this.height = 100;
+		this.editing = false;
+		this.title = "New Widget";
+	}
 	
 	public Widget(String wtype, Integer width, Integer height, Boolean editing, String title) {
 		this.wtype = wtype;

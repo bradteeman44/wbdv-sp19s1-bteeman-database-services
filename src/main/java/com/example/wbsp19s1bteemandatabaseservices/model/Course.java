@@ -27,10 +27,10 @@ public class Course {
 		this.modules = new ArrayList<>();
 	}
 	
-	public Course(int id, String title) {
-		this.id = id;
+	public Course(String title) {
 		this.title = title;
 		this.modules = new ArrayList<>();
+		this.addModule(new Module("New Module"));
 	}
 	
 	public Integer getId() {

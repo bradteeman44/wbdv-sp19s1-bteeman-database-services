@@ -25,10 +25,10 @@ public class Lesson {
 		this.topics = new ArrayList<>();
 	}
 	
-	public Lesson(int id, String title) {
-		this.id = id;
+	public Lesson(String title) {
 		this.title = title;
 		this.topics = new ArrayList<>();
+		this.addTopic(new Topic("New Topic"));
 	}
 	
 	public Integer getId() {
