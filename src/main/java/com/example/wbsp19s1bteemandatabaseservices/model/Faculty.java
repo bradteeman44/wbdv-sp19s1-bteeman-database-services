@@ -26,6 +26,11 @@ public class Faculty extends User {
 		this.tenure = tenure;
 		this.authoredCourses = new ArrayList<>();
 	}
+	public Faculty(String username, String password) {
+		this.username = username;
+		this.password = password;
+		this.authoredCourses = new ArrayList<>();
+	}
 	public String getOffice() {
 		return office;
 	}

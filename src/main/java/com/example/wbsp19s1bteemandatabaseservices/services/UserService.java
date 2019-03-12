@@ -1,6 +1,5 @@
 package com.example.wbsp19s1bteemandatabaseservices.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -26,46 +25,24 @@ public class UserService {
 	
 	@Autowired
 	UserRepository userRepository;
-	
-	private User alice = new User("alice", "p", "Alice", "Wonderland", "STUDENT");
-	private User bob   = new User("bob", "p","Bob", "Marley", "ADMIN");
-	private List<User> users = new ArrayList<User>();
-	{
-		users.add(alice);
-		users.add(bob);
-	}
-	
-	@PostMapping("/api/users")
-	public User createUser(@RequestBody User user) {
-	  		return userRepository.save(user);
-	}
 
 	@PostMapping("/api/register")
 	public User register(@RequestBody User user,
 			HttpSession session) {
-		user.setId(((Double)(Math.random() * 10000000)).intValue());
 		session.setAttribute("currentUser", user);
-		users.add(user);
-		return user;
+		return userRepository.save(user);
 	}
 	
 	@PostMapping("/api/profile")
 	public User profile(HttpSession session) {
-		User currentUser = (User) session.getAttribute("currentUser");
+		User currentUser = (User)session.getAttribute("currentUser");
 		return currentUser;
 	}
 	
 	@PostMapping("/api/login")
 	public User login(@RequestBody User credentials,
 			HttpSession session) {
-		for (User user : users) {
-			if( user.getUsername().equals(credentials.getUsername()) 
-					&& user.getPassword().equals(credentials.getPassword())) {
-				session.setAttribute("currentUser", user);
-				return user;
-			}
-		}
-		return null;
+		return userRepository.findUserByCredentials(credentials.getUsername(), credentials.getPassword());
 	}
 	
 	@PostMapping("/api/logout")

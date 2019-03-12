@@ -13,7 +13,7 @@ public interface UserRepository
 		(@Param("username") String username);
 	
 	@Query("SELECT user from User user WHERE user.username=:username AND user.password=:password")
-	public List<User> findUserByCredentials
+	public User findUserByCredentials
 		(@Param("username") String username,
 				@Param("password") String password);
 }
