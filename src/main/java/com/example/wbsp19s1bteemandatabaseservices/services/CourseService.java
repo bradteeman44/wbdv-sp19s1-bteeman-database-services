@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.wbsp19s1bteemandatabaseservices.model.Course;
+import com.example.wbsp19s1bteemandatabaseservices.model.User;
 import com.example.wbsp19s1bteemandatabaseservices.repositories.*;
 
 @RestController
@@ -21,16 +22,22 @@ public class CourseService {
 
 	@Autowired
 	CourseRepository courseRepository;
+	@Autowired
+	UserRepository userRepository;
 	
-	@PostMapping("/api/courses")
+	@PostMapping("/api/users/{id}/courses")
 	public Course createCourse(
+			@PathVariable("id") Integer id,
 			@RequestBody Course course) {
+		course.setAuthor(userRepository.findById(id).get());
 		return courseRepository.save(course);
 	}
 	
-	@GetMapping("/api/courses")
-	public List<Course> findAllCourses() {
-		return (List<Course>) courseRepository.findAll();
+	@GetMapping("/api/faculty/{id}/courses")
+	public List<Course> findAllCourses(
+			@PathVariable("id") Integer id) {
+		User user = userRepository.findById(id).get();
+		return user.getAuthoredCourses();
 	}
 	
 	@GetMapping("/api/courses/{cid}")
