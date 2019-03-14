@@ -21,7 +21,7 @@ public class Course {
 	
 	@ManyToOne()
 	@JsonIgnore
-	private Faculty author;
+	private User author;
 	
 	public Course() {
 		this.modules = new ArrayList<>();
@@ -51,11 +51,11 @@ public class Course {
 	public void setModules(List<Module> modules) {
 		this.modules = modules;
 	}
-	public Faculty getAuthor() {
+	public User getAuthor() {
 		return author;
 	}
 
-	public void setAuthor(Faculty author) {
+	public void setAuthor(User author) {
 		this.author = author;
 		if(!author.getAuthoredCourses().contains(this)) {
 			author.getAuthoredCourses().add(this);
