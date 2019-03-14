@@ -42,7 +42,8 @@ public class UserService {
 	@PostMapping("/api/login")
 	public User login(@RequestBody User credentials,
 			HttpSession session) {
-		User user = (User) userRepository.findUserByCredentials(credentials.getUsername(), credentials.getPassword());
+		User user = userRepository.findUserByCredentials(credentials.getUsername(), credentials.getPassword());
+		System.out.print(user);
 		session.setAttribute("currentUser", user);
 		return user;
 	}
