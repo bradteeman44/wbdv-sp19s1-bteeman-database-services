@@ -50,6 +50,11 @@ public class UserService {
 		session.invalidate();
 	}
 	
+	@PostMapping("/api/users")
+	public User createUser(@RequestBody User user) {
+		return userRepository.save(user);
+	}
+	
 	@GetMapping("/api/users")
 	public List<User> findAllUsers(
 			@RequestParam(name="username", required=false) String uname) {  

@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import com.example.wbsp19s1bteemandatabaseservices.model.Lesson;
 import com.example.wbsp19s1bteemandatabaseservices.model.Topic;
-import com.example.wbsp19s1bteemandatabaseservices.model.Widget;
 import com.example.wbsp19s1bteemandatabaseservices.repositories.*;
 
 @RestController
