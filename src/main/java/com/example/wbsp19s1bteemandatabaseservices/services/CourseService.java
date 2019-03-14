@@ -33,7 +33,7 @@ public class CourseService {
 		return courseRepository.save(course);
 	}
 	
-	@GetMapping("/api/faculty/{id}/courses")
+	@GetMapping("/api/users/{id}/courses")
 	public List<Course> findAllCourses(
 			@PathVariable("id") Integer id) {
 		User user = userRepository.findById(id).get();
