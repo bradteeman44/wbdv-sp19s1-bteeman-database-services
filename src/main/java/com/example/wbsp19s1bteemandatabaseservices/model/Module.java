@@ -76,7 +76,5 @@ public class Module {
 	
 	public void set(Module newModule) {
 		this.title = newModule.title;
-		this.lessons = newModule.lessons;
-		this.course = newModule.course;
 	}
 }
