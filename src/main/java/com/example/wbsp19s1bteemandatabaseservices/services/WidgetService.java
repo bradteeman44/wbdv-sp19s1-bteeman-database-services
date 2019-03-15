@@ -56,7 +56,7 @@ public class WidgetService {
 		return widgetRepository.save(widget);
 	}
 	
-	@DeleteMapping("/api/widgte/{wid}")
+	@DeleteMapping("/api/widget/{wid}")
 	public void deleteWidget(
 			@PathVariable("wid") Integer wid) {
 		widgetRepository.deleteById(wid);
