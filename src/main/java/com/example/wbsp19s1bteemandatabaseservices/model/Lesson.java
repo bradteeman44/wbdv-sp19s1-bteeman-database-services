@@ -75,7 +75,5 @@ public class Lesson {
 	
 	public void set(Lesson newLesson) {
 		this.title = newLesson.title;
-		this.topics = newLesson.topics;
-		this.module = newLesson.module;
 	}
 }

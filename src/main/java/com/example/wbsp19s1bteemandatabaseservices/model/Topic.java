@@ -75,8 +75,6 @@ public class Topic {
 	
 	public void set(Topic newTopic) {
 		this.title = newTopic.title;
-		this.widgets = newTopic.widgets;
-		this.lesson = newTopic.lesson;
 	}
 	
 }

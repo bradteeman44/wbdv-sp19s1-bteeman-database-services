@@ -41,7 +41,6 @@ public class HeadingWidget extends Widget {
 		this.wtype = newHeadingWidget.wtype;
 		this.width = newHeadingWidget.width;
 		this.height = newHeadingWidget.height;
-		this.topic = newHeadingWidget.topic;
 		this.editing = newHeadingWidget.editing;
 		this.title = newHeadingWidget.title;
 		this.size = newHeadingWidget.size;

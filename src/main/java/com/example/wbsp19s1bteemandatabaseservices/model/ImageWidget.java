@@ -31,7 +31,6 @@ public class ImageWidget extends Widget {
 		this.wtype = newHImageWidget.wtype;
 		this.width = newHImageWidget.width;
 		this.height = newHImageWidget.height;
-		this.topic = newHImageWidget.topic;
 		this.editing = newHImageWidget.editing;
 		this.title = newHImageWidget.title;
 		this.url = newHImageWidget.url;

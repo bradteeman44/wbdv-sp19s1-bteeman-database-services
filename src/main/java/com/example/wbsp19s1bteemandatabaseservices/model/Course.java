@@ -70,7 +70,5 @@ public class Course {
 	
 	public void set(Course newCourse) {
 		this.title = newCourse.title;
-		this.modules = newCourse.modules;
-		this.author = newCourse.author;
 	}
 }

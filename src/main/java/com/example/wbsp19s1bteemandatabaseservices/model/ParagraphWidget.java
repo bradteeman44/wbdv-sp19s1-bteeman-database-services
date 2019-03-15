@@ -31,7 +31,6 @@ public class ParagraphWidget extends Widget {
 		this.wtype = newParagraphWidget.wtype;
 		this.width = newParagraphWidget.width;
 		this.height = newParagraphWidget.height;
-		this.topic = newParagraphWidget.topic;
 		this.editing = newParagraphWidget.editing;
 		this.title = newParagraphWidget.title;
 		this.text = newParagraphWidget.text;

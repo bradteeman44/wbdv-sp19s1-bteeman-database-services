@@ -100,7 +100,6 @@ public class Widget {
 		this.wtype = newWidget.wtype;
 		this.width = newWidget.width;
 		this.height = newWidget.height;
-		this.topic = newWidget.topic;
 		this.editing = newWidget.editing;
 		this.title = newWidget.title;
 	}

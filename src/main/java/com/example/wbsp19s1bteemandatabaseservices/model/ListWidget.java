@@ -41,7 +41,6 @@ public class ListWidget extends Widget {
 		this.wtype = newListWidget.wtype;
 		this.width = newListWidget.width;
 		this.height = newListWidget.height;
-		this.topic = newListWidget.topic;
 		this.editing = newListWidget.editing;
 		this.title = newListWidget.title;
 		this.list = newListWidget.list;
