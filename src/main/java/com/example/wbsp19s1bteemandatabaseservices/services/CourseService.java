@@ -33,6 +33,11 @@ public class CourseService {
 		return courseRepository.save(course);
 	}
 	
+	@GetMapping("/api/courses")
+	public List<Course> findAllCoursesNoUser() {
+		return (List<Course>) courseRepository.findAll();
+	}
+	
 	@GetMapping("/api/users/{id}/courses")
 	public List<Course> findAllCourses(
 			@PathVariable("id") Integer id) {
